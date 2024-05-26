@@ -46,7 +46,6 @@ const App: React.FC<AppProps> = ({ signOut, user }) => {
     client.models.Todo.delete({ id });
   }
 
-
   return (
     <main>
       <h1>My todos</h1>
@@ -69,7 +68,15 @@ const App: React.FC<AppProps> = ({ signOut, user }) => {
 export default function AppWithAuth() {
   return (
     <AuthenticatorComponent>
-      <App signOut={() => {}} user={{ username: "" }} />
+      <App
+        signOut={() => {}}
+        user={{
+          signInDetails: {
+            loginId: "",
+          },
+          username: "",
+        }}
+      />
     </AuthenticatorComponent>
   );
 }
