@@ -23,10 +23,10 @@ type AppProps = {
 };
 
 const App: React.FC<AppProps> = ({ signOut, user }) => {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [todos, setTodos] = useState<Array<Schema["Task"]["type"]>>([]);
 
   function listTodos() {
-    client.models.Todo.observeQuery().subscribe({
+    client.models.Task?.observeQuery().subscribe({
       next: (data) => setTodos([...data.items]),
     });
   }
@@ -38,12 +38,12 @@ const App: React.FC<AppProps> = ({ signOut, user }) => {
   function createTodo() {
     const content = window.prompt("Todo content");
     if (content) {
-      client.models.Todo.create({ content });
+      client.models.Task.create({ content });
     }
   }
 
   function deleteTodo(id: string) {
-    client.models.Todo.delete({ id });
+    client.models.Task.delete({ id });
   }
 
   return (
