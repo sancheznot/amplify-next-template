@@ -39,6 +39,7 @@ const App: React.FC<AppProps> = ({ signOut, user }) => {
     const title = window.prompt("Todo title");
     const content = window.prompt("Todo content");
     if (title && content) {
+      console.log(title, content)
       client.models.Task.create({ title, content });
     }
   }
